@@ -10,6 +10,6 @@ namespace BattleshipLiteNewLibrary.Models
     {
         public string SpotLetter { get; set; }
         public int SpotNumber { get; set; }
-        public int Status { get; set; } 
+        public GridSpotStatus Status { get; set; } = GridSpotStatus.Empty;
     }
 }
