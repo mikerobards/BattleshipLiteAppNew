@@ -1,4 +1,5 @@
 ﻿
+using BattleshipLiteNewLibrary;
 using BattleshipLiteNewLibrary.Models;
 
 WelcomeMessage();
@@ -16,8 +17,14 @@ static PlayerInfoModel CreatePlayer()
 
     // Ask the user for their name
     output.UsersName = AskForUsersName();
+
     // Load up the shot grid
+    GameLogic.InitializeGrid(output);
+
     // Ask the user for their 5 ship placements
+
+
+
     // Clear the screen and done
 
 
@@ -32,3 +39,11 @@ static string AskForUsersName()
 
 }
 
+static void PlaceShips(PlayerInfoModel model)
+{
+    do
+    {
+        Console.Write($"Where do you want to place ship number { model.ShipLocations.Count + 1 }: ");
+
+    } while (model.ShipLocations.Count < 5);
+}
