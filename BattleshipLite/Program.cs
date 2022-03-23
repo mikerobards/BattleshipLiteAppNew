@@ -14,6 +14,9 @@ do
     DisplayShotGrid(activePlayer);
 
     // Ask activePlayer for a shot
+
+
+
     // Determine if it is a valid shot
     // Determine shot results
     // Determine if game is over
@@ -29,9 +32,27 @@ static void DisplayShotGrid(PlayerInfoModel activePlayer)
 
     foreach (var gridSpot in activePlayer.ShotGrid)
     {
+        if (gridSpot.SpotLetter != currentRow)
+        {
+            Console.WriteLine();
+            currentRow = gridSpot.SpotLetter;
+        }
+
         if (gridSpot.Status == GridSpotStatus.Empty)
         {
             Console.Write($" { gridSpot.SpotLetter }{ gridSpot.SpotNumber } ");
+        }
+        else if (gridSpot.Status == GridSpotStatus.Hit)
+        {
+            Console.Write(" X ");
+        }
+        else if (gridSpot.Status == GridSpotStatus.Miss)
+        {
+            Console.Write(" O ");
+        }
+        else
+        {
+            Console.Write(" ? ");
         }
     }
 }
