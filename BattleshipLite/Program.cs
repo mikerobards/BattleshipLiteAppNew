@@ -4,8 +4,37 @@ using BattleshipLiteNewLibrary.Models;
 
 WelcomeMessage();
 
-PlayerInfoModel player1 = CreatePlayer();
-PlayerInfoModel player2 = CreatePlayer();
+PlayerInfoModel activePlayer = CreatePlayer("Player 1");
+PlayerInfoModel opponent = CreatePlayer("Player 2");
+PlayerInfoModel winner = null;
+
+do
+{
+    // Display grid from activePlayer on where they fired
+    DisplayShotGrid(activePlayer);
+
+    // Ask activePlayer for a shot
+    // Determine if it is a valid shot
+    // Determine shot results
+    // Determine if game is over
+    // If over, set activePlayer as winner
+    // Else, swap positions (activePlayer to opponent)
+
+
+} while (winner == null);
+
+static void DisplayShotGrid(PlayerInfoModel activePlayer)
+{
+    string currentRow = activePlayer.ShotGrid[0].SpotLetter;
+
+    foreach (var gridSpot in activePlayer.ShotGrid)
+    {
+        if (gridSpot.Status == GridSpotStatus.Empty)
+        {
+            Console.Write($" { gridSpot.SpotLetter }{ gridSpot.SpotNumber } ");
+        }
+    }
+}
 
 static void WelcomeMessage()
 {
@@ -14,9 +43,11 @@ static void WelcomeMessage()
     Console.WriteLine();
 }
 
-static PlayerInfoModel CreatePlayer()
+static PlayerInfoModel CreatePlayer(string playerTitle)
 {
     PlayerInfoModel output = new PlayerInfoModel();
+
+    Console.WriteLine($"Player information for { playerTitle }");
 
     // Ask the user for their name
     output.UsersName = AskForUsersName();
